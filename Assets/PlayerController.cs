@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float horizontalForce = 5.0f;
     [SerializeField] private float verticalForce = 1.0f;
     [SerializeField] private float maxSpeed = 3.0f;
+    [SerializeField] private float speed = 5.0f;
 
     private Rigidbody rg;
 
@@ -25,9 +26,9 @@ public class PlayerController : MonoBehaviour
         float dx = joystick.Horizontal * horizontalForce;
         float dy = joystick.Vertical * verticalForce;
 
-        if (rg.velocity.sqrMagnitude < maxSpeed)
+        if (rg.velocity.magnitude < maxSpeed)
         {
-            Vector3 f = transform.forward * joystick.Direction.sqrMagnitude;
+            Vector3 f = transform.forward * joystick.Direction.sqrMagnitude * speed;
             rg.AddForce(f, ForceMode.Acceleration);
         }
 
