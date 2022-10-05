@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+
         SceneManager.SetActiveScene(SceneManager.GetSceneByName("Game"));
         Observable.Interval(TimeSpan.FromSeconds(1)).Subscribe(_ =>
         {
