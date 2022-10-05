@@ -10,7 +10,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float horizontalForce = 5.0f;
     [SerializeField] private float verticalForce = 1.0f;
     [SerializeField] private float maxSpeed = 3.0f;
-    private bool swpped = false;
 
     private Rigidbody rg;
 
