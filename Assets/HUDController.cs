@@ -11,7 +11,7 @@ public class HUDController : MonoBehaviour
 
     private void Start()
     {
-        GameManager.Instance.timeProperty.Subscribe(timeValue =>
+        GameManager.Instance.TimeProperty.Subscribe(timeValue =>
         {
             timerText.text = timeValue.ToString();
         }).AddTo(this);

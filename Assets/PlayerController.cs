@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -44,6 +45,16 @@ public class PlayerController : MonoBehaviour
         else if (joystick.Horizontal < 0)
         {
             rg.MoveRotation(Quaternion.Euler(-joystick.Vertical * 30, -90, transform.localEulerAngles.z));
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Coin"))
+        {
+            Destroy(collision.gameObject);
+            GameManager.Instance.Won.Value = true;
+            Debug.Log("Zderzenie");
         }
     }
 }
