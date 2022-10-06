@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 using UniRx;
 using UnityEngine.SceneManagement;
 
@@ -15,6 +16,8 @@ public class GameManager : MonoBehaviour
     public List<HighScore> Scores { get; set; } = new List<HighScore>();
 
     public string playerName;
+
+    [SerializeField] private Vignette vignette;
 
     [SerializeField] private GameObject HUD, Menu, WinScreen, LoseScreen;
 
