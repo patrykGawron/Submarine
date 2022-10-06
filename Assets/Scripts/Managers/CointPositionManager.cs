@@ -8,11 +8,14 @@ public class CointPositionManager : MonoBehaviour
 
     [SerializeField] private GameObject coin;
     [SerializeField] private Collider coinSpawnConstraints;
+
     void Start()
     {
-        Vector3 pos = new Vector3(Random.Range(coinSpawnConstraints.bounds.min.x, coinSpawnConstraints.bounds.max.x),
+        Vector3 pos = new Vector3(
+            Random.Range(coinSpawnConstraints.bounds.min.x, coinSpawnConstraints.bounds.max.x),
             Random.Range(coinSpawnConstraints.bounds.min.y, coinSpawnConstraints.bounds.max.y),
             1);
-        GameObject.Instantiate(coin, pos, Quaternion.Euler(90, 0, 90));
+
+        Instantiate(coin, pos, Quaternion.Euler(90, 0, 90));
     }
 }
