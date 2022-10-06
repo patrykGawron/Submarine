@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEngine;
 
+[RequireComponent(typeof(Collider), typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private Joystick joystick;
@@ -29,7 +30,7 @@ public class PlayerController : MonoBehaviour
 
         if (rg.velocity.magnitude < maxSpeed)
         {
-            Vector3 f = transform.forward * joystick.Direction.sqrMagnitude * speed;
+            Vector3 f = transform.forward * (joystick.Direction.sqrMagnitude * speed);
             rg.AddForce(f, ForceMode.Acceleration);
         }
 
@@ -48,13 +49,19 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.CompareTag("Coin"))
+        if (other.gameObject.CompareTag("Coin"))
         {
-            Destroy(collision.gameObject);
+            Destroy(other.gameObject);
             GameManager.Instance.Won.Value = true;
-            Debug.Log("Zderzenie");
+        }
+        else if(other.gameObject.CompareTag("Fish"))
+
+        {
+            Destroy(other.gameObject);
+            GameManager.Instance.TimeProperty.Value -= 5;
+            Debug.Log("COLLIDED WITH FISH");
         }
     }
 }
