@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Joystick
   - Coin
+  - Fish
   layers:
   - Default
   - TransparentFX
